@@ -67,7 +67,7 @@ metadata:
 type: kubernetes.io/service-account-token  
 ```
 
-After Secret is created, we can execute the following command to get the token which saved in the Secret:
+After Secret is created, we can execute the following command to get the token which is saved in the Secret:
 
 ```shell
 kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
@@ -82,6 +82,8 @@ Now copy the token and paste it into the `Enter token` field on the login screen
 ![Sing in](../../images/signin.png)
 
 Click the `Sign in` button and that's it. You are now logged in as an admin.
+
+**Note** Token login is ONLY allowed when the browser is accessing the UI over https.  If your networking path to the UI is via http, the login will fail with an invalid token error.
 
 ![Overview](../../images/overview.png)
 
